@@ -29,8 +29,7 @@ const setLastCoffeeSells = (sells) => {
 const startPooling = async () => {
     while (true) {
         const sells = await fetchCoffeeSells();
-
-        if(!lastCoffeeSells) {
+        if(!lastCoffeeSells || sells < lastCoffeeSells) {
             setLastCoffeeSells(sells);
             continue;
         }
